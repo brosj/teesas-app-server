@@ -129,13 +129,13 @@
 	],
 	"variable": [
 		{
-			"id": "483c0ef7-e62f-4661-8580-b478cbd29969",
+			"id": "96318c9c-b385-4bc7-a6cc-782d07d4af05",
 			"key": "local",
 			"value": "localhost:3001",
 			"type": "string"
 		},
 		{
-			"id": "aff19619-300c-4605-88ff-0ce295344053",
+			"id": "6ba82949-631b-43cf-b7f3-545986644b90",
 			"key": "token",
 			"value": ""
 		}
