@@ -1,0 +1,144 @@
+{
+	"info": {
+		"_postman_id": "deb6738d-6ab1-4d4a-9f49-8d605d774b30",
+		"name": "Teesas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Sign Up",
+					"_postman_id": "f554b8c3-21e5-4cdd-bf2f-6cf2e2f47283",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"childName\": \"John Doe\",\n    \"email\": \"john.doe@email.com\",\n    \"phoneNumber\": 8033322111,\n    \"countryCode\": 234,\n    \"password\": \"P@$$W0rd\",\n    \"confirmPassword\": \"P@$$W0rd\",\n    \"grade\": \"Excellent\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local}}/signup"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f4e8b5af-605c-40e6-9248-224e55ace973",
+								"exec": [
+									"pm.test(\"Pass login token to header\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.collectionVariables.set(\"token\", jsonData.token);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"_postman_id": "ac7b713b-0a1b-447b-abec-1de440efe81f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"john.doe@email.com\",\n    \"password\": \"P@$$W0rd\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local}}/login"
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "73c6508a-8d28-4b3e-8dc6-6fbcda86f382"
+		},
+		{
+			"name": "Lessons",
+			"item": [
+				{
+					"name": "Get Lesson",
+					"_postman_id": "0f90c9d0-66bb-401b-bad3-21c9c6b701a2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"lessonName\": \"Mathematics\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{local}}/lesson"
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "e0008818-2042-4cd1-87c0-e54a399c52e3"
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": {
+			"token": "{{token}}"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "cfce27f6-bf11-4f2a-972f-88b8cc382d90",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "c770c9ce-d00a-4863-9fda-3935047acdde",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "698b70c9-11de-4c6a-ad05-e1ba51a0f847",
+			"key": "local",
+			"value": "localhost:3001",
+			"type": "string"
+		},
+		{
+			"id": "eab47c74-e3f6-482e-80eb-ae34f82d8dde",
+			"key": "token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
