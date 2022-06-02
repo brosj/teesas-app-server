@@ -10,7 +10,7 @@ interface userAttributes {
   grade: string;
 }
 
-module.exports = (sequelize: any, DataTypes: any) => {
+const User = (sequelize: any, DataTypes: any) => {
   class User extends Model<userAttributes> 
   implements userAttributes {
     childName!: string;
@@ -19,17 +19,6 @@ module.exports = (sequelize: any, DataTypes: any) => {
     countryCode!: number;
     password!: string;
     grade!: string;
-
-    static associate(models: any) {
-      // define association here
-      /*
-      User.hasMany(models.Lesson, {
-        sourceKey: 'email',
-        foreignKey: 'email',
-        as: 'Lessons'
-       });
-      */
-    }
   }
 
   User.init({
@@ -49,7 +38,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
     },
     countryCode: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: false
     },
     password: {
       type: DataTypes.STRING,
@@ -57,7 +46,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
     },
     grade: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: false
     }
   }, {
     sequelize,
@@ -66,3 +55,6 @@ module.exports = (sequelize: any, DataTypes: any) => {
 
   return User;
 };
+
+module.exports = User;
+export default User;

@@ -7,16 +7,11 @@ interface lessonAttributes {
   duration: number;
 }
 
-module.exports = (sequelize: any, DataTypes: any) => {
+const Lesson = (sequelize: any, DataTypes: any) => {
   class Lesson extends Model<lessonAttributes> implements lessonAttributes {
     name!: string;
     startDate!: Date;
     duration!: number;
-
-    static associate(models: any) {
-      // define association here
-      // Lesson.belongsTo(models.User);
-    }
   }
 
   Lesson.init(
@@ -38,9 +33,13 @@ module.exports = (sequelize: any, DataTypes: any) => {
     },
     {
       sequelize,
+      timestamps: false,
       modelName: 'Lesson',
     }
   );
 
   return Lesson;
 };
+
+module.exports = Lesson;
+export default Lesson;
